@@ -4,7 +4,7 @@ require "logger.php"; // export logger variable, is there a fopen problem????
 
 echo "fuck";
 die();
-define("API_KEY",require "API_KEY.php");
+// define("API_KEY",require "API_KEY.php");
 echo "fuck";
 function bot($method,$datas=[]){
     global $logger;
