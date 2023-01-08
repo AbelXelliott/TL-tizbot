@@ -20,6 +20,7 @@ function bot($method,$datas=[]){
 
 $floodtime = file_get_contents("data/$chat_id/moderation/floodtime.txt"); // Unused!!!!
 $update = json_decode(file_get_contents('php://input'));
+$logger->log(var_dump($update));
 $msg = $update->message;
 $text = $msg->text;
 mkdir("data"); // duplicated!!!!
