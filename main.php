@@ -19,34 +19,34 @@ if ($text == "/start") {
     mkdir("data/$from_id");
     bot("sendMessage",[
         "chat_id" => $chat_id,
-        "test" => "Hello $first $last, Welcome to the official Tizrosoft bot!⁪⁬⁮⁮⁮⁮⁪⁬⁮⁮⁮⁮⁪⁬⁮⁮⁮⁮",
+        "text" => "Hello $first $last, Welcome to the official Tizrosoft bot!⁪⁬⁮⁮⁮⁮⁪⁬⁮⁮⁮⁮⁪⁬⁮⁮⁮⁮",
         "reply_markup" => json_encode([
             "resize_keyboard" => true,
             "keyboard"=>[
                 [
                     [
-                        "test"=>"News and notifications ⚠️"
+                        "text"=>"News and notifications ⚠️"
                     ]
                 ],
                 [
                     [
-                        "test"=>"Tccount 🛍"
+                        "text"=>"Tccount 🛍"
                     ],
                     [
-                        "test"=>""
+                        "text"=>""
                     ]
                 ],
                 [
                     [
-                        "test"=>"Contact us 📨"
+                        "text"=>"Contact us 📨"
                     ],
                     [
-                        "test"=>"About us ℹ "
+                        "text"=>"About us ℹ "
                     ]
                 ],
                 [
                     [
-                        "test"=>"Update 🔄"
+                        "text"=>"Update 🔄"
                     ]
                 ],
             ],
@@ -58,34 +58,34 @@ if ($text == "Back") {
     mkdir("data/$from_id");
     bot("sendMessage",[
         "chat_id" => $chat_id,
-        "test" => "✅",
+        "text" => "✅",
         "reply_markup" => json_encode([
             "resize_keyboard" => true,
             "keyboard" => [
                 [
                     [
-                        "test"=>"News and notifications ⚠️"
+                        "text"=>"News and notifications ⚠️"
                     ]
                 ],
                 [
                     [
-                        "test"=>"Tccount 🛍"
+                        "text"=>"Tccount 🛍"
                     ],
                     [
-                        "test"=>""
+                        "text"=>""
                     ]
                 ],
                 [
                     [
-                        "test"=>"Contact us 📨"
+                        "text"=>"Contact us 📨"
                     ],
                     [
-                        "test"=>"About us ℹ️"
+                        "text"=>"About us ℹ️"
                     ]
                 ],
                 [
                     [
-                        "test"=>"Update 🔄"
+                        "text"=>"Update 🔄"
                     ]
                 ],
             ],
@@ -97,34 +97,34 @@ if ($text == "Update 🔄") {
     mkdir("data/$from_id");
     bot("sendMessage",[
         "chat_id" => $chat_id,
-        "test" => "Bot has been successfully updated 🐣",
+        "text" => "Bot has been successfully updated 🐣",
         "reply_markup" => json_encode([
             "resize_keyboard" => true,
             "keyboard" => [
                 [
                     [
-                        "test" => "News and notifications ⚠️"
+                        "text" => "News and notifications ⚠️"
                     ]
                 ],
                 [
                     [
-                        "test" => "Tccount 🛍"
+                        "text" => "Tccount 🛍"
                     ],
                     [
-                        "test" => ""
+                        "text" => ""
                     ]
                 ],
                 [
                     [
-                        "test" => "Contact us 📨"
+                        "text" => "Contact us 📨"
                     ],
                     [
-                        "test" => "About us ℹ️"
+                        "text" => "About us ℹ️"
                     ]
                 ],
                 [
                     [
-                        "test" => "Update 🔄"
+                        "text" => "Update 🔄"
                     ]
                 ],
             ],
@@ -143,7 +143,7 @@ if ($text == "About us ℹ️"){
             "inline_keyboard" => [
                 [
                     [
-                        "test" => "Learn more...",
+                        "text" => "Learn more...",
                         "url" => "https://www.tizrosoft.com/aboutus"
                     ]
                 ],
@@ -246,13 +246,13 @@ if ($text == "News and notifications ⚠️"){
                 ],
                 [
                     [
-                        "test" => "Instagram 📌",
+                        "text" => "Instagram 📌",
                         "url" => "https://instagram.com/tizrosoft"
                     ]
                 ],
                 [
                     [
-                        "test" => "Telegram 📌",
+                        "text" => "Telegram 📌",
                         "url" => "https://t.me/tizrosoft"
                     ]
                 ],
@@ -280,55 +280,55 @@ if ($text == "Products 📦"){
             "keyboard" => [
                 [
                     [
-                        "test" => "Tizrosoft Terminal 🖥",
+                        "text" => "Tizrosoft Terminal 🖥",
                         "url" => ""
                     ]
                 ],
                 [
                     [
-                        "test" => "Tizro Store 🖥",
+                        "text" => "Tizro Store 🖥",
                         "url" => ""
                     ]
                 ],
                 [
                     [
-                        "test" => "DLite 🖥",
+                        "text" => "DLite 🖥",
                         "url" => ""
                     ]
                 ],
                 [
                     [
-                        "test" => "DotH 🖥",
+                        "text" => "DotH 🖥",
                         "url" => ""
                     ]
                 ],
                 [
                     [
-                        "test" => "CoreX 🖥",
+                        "text" => "CoreX 🖥",
                         "url" => ""
                     ]
                 ],
                 [
                     [
-                        "test" => "Klock 🖥",
+                        "text" => "Klock 🖥",
                         "url" => ""
                     ]
                 ],
                 [
                     [
-                        "test" => "Anten📱",
+                        "text" => "Anten📱",
                         "url" => ""
                     ]
                 ],
                 [
                     [
-                        "test" => "Tunnel📱",
+                        "text" => "Tunnel📱",
                         "url" => ""
                     ]
                 ],
                 [
                     [
-                        "test" => "Back",
+                        "text" => "Back",
                         "url" => ""
                     ]
                 ],
@@ -451,7 +451,7 @@ if($text == "Users 👥" && $from_id == $admin){
     $member_count = count($member_id) -1;
     bot("sendMessage",[
       "chat_id" => $chat_id,
-      "test" => "Users: $member_count",
+      "text" => "Users: $member_count",
     ]);
 }
 
@@ -459,18 +459,18 @@ if ($text == "panel" && $from_id == $admin) {
     mkdir("data/$from_id");
     bot("sendMessage",[
         "chat_id" => $chat_id,
-        "test" => "Hello admin 👮‍♂️⁪⁬⁮⁮⁮⁮⁪⁬⁮⁮⁮⁮⁪⁬⁮⁮⁮⁮",
+        "text" => "Hello admin 👮‍♂️⁪⁬⁮⁮⁮⁮⁪⁬⁮⁮⁮⁮⁪⁬⁮⁮⁮⁮",
         "reply_markup" => json_encode([
             "resize_keyboard" => true,
             "keyboard" => [
                 [
                     [
-                        "test" => "Users 👥"
+                        "text" => "Users 👥"
                     ]
                 ],
                 [
                     [
-                        "test" => "Back"
+                        "text" => "Back"
                     ]
                 ],
             ],
