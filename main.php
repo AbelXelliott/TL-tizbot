@@ -1,4 +1,5 @@
 <?php
+require "functions.php";
 require "logger.php"; // export logger variable, is there a fopen problem????
 
 define("API_KEY",require "API_KEY.php");
