@@ -1,23 +1,8 @@
 <?php
+define("API_KEY",require "API_KEY.php");
 require "functions.php";
 require "logger.php";
 
-define("API_KEY",require "API_KEY.php");
-function bot($method,$datas=[]){
-    global $logger;
-    $url = "https://api.telegram.org/bot".API_KEY."/".$method;
-    $ch = curl_init();
-    curl_setopt($ch,CURLOPT_URL,$url);
-    curl_setopt($ch,CURLOPT_RETURNTRANSFER,true);
-    curl_setopt($ch,CURLOPT_POSTFIELDS,$datas);
-    $res = curl_exec($ch);
-    if(curl_error($ch)){
-        $logger->log(var_dump(curl_error($ch)));
-    } else {
-        $logger->log(var_dump($res));
-        return json_decode($res);
-    }
-}
 
 // $floodtime = file_get_contents("data/$chat_id/moderation/floodtime.txt"); // Unused!!!!
 $update = json_decode(file_get_contents('php://input'));
