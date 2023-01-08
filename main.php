@@ -1,11 +1,11 @@
 <?php
-require "functions.php";
-require "logger.php"; // export logger variable, is there a fopen problem????
-
 echo "fuck";
 die();
-// define("API_KEY",require "API_KEY.php");
+require "functions.php";
 echo "fuck";
+require "logger.php"; // export logger variable, is there a fopen problem????
+
+// define("API_KEY",require "API_KEY.php");
 function bot($method,$datas=[]){
     global $logger;
     $url = "https://api.telegram.org/bot".API_KEY."/".$method;
