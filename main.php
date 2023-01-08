@@ -3,7 +3,7 @@ require "API_KEY.php";
 require "src/functions.php";
 require "src/Database.php";
 
-// identifyTelegramServer();
+identifyTelegramServer();
 
 logger("New update:");
 logger("\t");
