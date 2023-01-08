@@ -1,5 +1,5 @@
 <?php
-define("API_KEY",require "API_KEY.php");
+require "API_KEY.php";
 require "functions.php";
 require "logger.php";
 
