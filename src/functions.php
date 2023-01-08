@@ -33,7 +33,7 @@ function identifyTelegramServer(){
     }
     if (!$ok) die("Go away...");
 }
-function logger(String $msg,$flush=false){
+function logger(String $msg="",$flush=false){
     static $buffer = [];
     if($flush){
         $logfile = fopen("logs/".date("Y-m-d"),"a");
@@ -50,7 +50,7 @@ function logger(String $msg,$flush=false){
         fclose($logfile);
     }
     else{
-        array_push($msg);
+        array_push($buffer,$msg);
         return $msg;
     }
 }

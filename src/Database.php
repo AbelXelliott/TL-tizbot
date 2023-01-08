@@ -16,6 +16,12 @@ class DataBase {
         return scandir($this->root."/users");
     }
 
+    public function setEntry($id,$entry,$val){
+        $blob = fopen($this->root."/users/$id/$entry","w");
+        fwrite($blob,$val);
+        fclose($blob);
+    }
+
     public function addUser($id,...$info){
         $user = $this->root."/users/$id";
         mkdir($user);
