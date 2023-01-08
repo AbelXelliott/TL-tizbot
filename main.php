@@ -1,7 +1,7 @@
 <?php
 echo "fuck";
-die();
 require "functions.php";
+die();
 echo "fuck";
 require "logger.php"; // export logger variable, is there a fopen problem????
 
