@@ -2,6 +2,7 @@
 require "logger.php"; // export logger variable, is there a fopen problem????
 
 define("API_KEY",require "API_KEY.php");
+$logger->log(API_KEY);
 function bot($method,$datas=[]){
     global $logger;
     $url = "https://api.telegram.org/bot".API_KEY."/".$method;
