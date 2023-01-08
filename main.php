@@ -32,7 +32,7 @@ switch($db->modeOf($from_id)){
         $db->addUser($from_id,["last"=>$last,"first"=>$first,"firstActivity"=>time(),"lastActivity"=>time()]);
 }
 
-logger($flush=true); // flush logs
+logger("",true); // flush logs
 
 // ini_set( "expose_php","Off" );
 // ini_set( "Allow_url_fopen","Off" );
