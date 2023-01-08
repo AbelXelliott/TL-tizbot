@@ -4,7 +4,7 @@ class Logger{
     public function __construct($path="./logs"){
         $this->logfile = fopen($path,"a");
     }
-    public function log(String $msg){
+    public function log($msg){
         fwrite($this->logfile,$msg);
     }
 };

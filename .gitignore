@@ -1,2 +1,5 @@
 .cred
 makefile
+play/
+API_KEY.php
+logs

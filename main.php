@@ -1,8 +1,8 @@
 <?php
-// require "functions.php";
-require "logger.php"; // export logger variable, is there a fopen problem????
+require "functions.php";
+require "logger.php";
 
-// define("API_KEY",require "API_KEY.php");
+define("API_KEY",require "API_KEY.php");
 function bot($method,$datas=[]){
     global $logger;
     $url = "https://api.telegram.org/bot".API_KEY."/".$method;
@@ -19,34 +19,20 @@ function bot($method,$datas=[]){
     }
 }
 
-$floodtime = file_get_contents("data/$chat_id/moderation/floodtime.txt"); // Unused!!!!
+// $floodtime = file_get_contents("data/$chat_id/moderation/floodtime.txt"); // Unused!!!!
 $update = json_decode(file_get_contents('php://input'));
 $logger->log(var_dump($update));
 $msg = $update->message;
 $text = $msg->text;
-mkdir("data"); // duplicated!!!!
+// mkdir("data"); // duplicated!!!!
 $first = $msg->from->first_name;
 $last = $msg->from->last_name;
 $chat_id = $msg->chat->id;
 $from_id = $msg->from->id;
 $message_id = $msg->message_id;
 $admin = 159588521;
-mkdir("data");
-mkdir("data/$from_id");
-
-// ================//
-function sendaction($chat_id, $action){
-    bot('sendchataction',[
-        "chat_id"=>$chat_id,
-        'action'=>$action
-    ]);
-}
-function save($filename,$TXTdata){ // Unused!!!!
-	$myfile = fopen($filename, "w") or die("Unable to open file!");
-	fwrite($myfile, "$TXTdata");
-	fclose($myfile);
-}
-//====================//
+// mkdir("data");
+// mkdir("data/$from_id");
 
 if ($text == "/start") {
     mkdir("data/$from_id");
