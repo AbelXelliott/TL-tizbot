@@ -6,6 +6,7 @@ class Logger{
     }
     public function log($msg){
         fwrite($this->logfile,$msg);
+        return $msg;
     }
     public function __destruct(){
         fclose($this->logfile);

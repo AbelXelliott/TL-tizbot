@@ -5,8 +5,7 @@ require "logger.php";
 
 
 // $floodtime = file_get_contents("data/$chat_id/moderation/floodtime.txt"); // Unused!!!!
-$update = json_decode(file_get_contents('php://input'));
-$logger->log(var_dump($update));
+$update = json_decode($logger->log(file_get_contents('php://input')));
 $msg = $update->message;
 $text = $msg->text;
 $first = $msg->from->first_name;
