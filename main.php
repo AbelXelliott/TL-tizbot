@@ -1,5 +1,5 @@
 <?php
-require "API_KEY.php";
+define("API_KEY",require "API_KEY.php");
 require "functions.php";
 require "logger.php";
 
@@ -9,15 +9,12 @@ $update = json_decode(file_get_contents('php://input'));
 $logger->log(var_dump($update));
 $msg = $update->message;
 $text = $msg->text;
-// mkdir("data"); // duplicated!!!!
 $first = $msg->from->first_name;
 $last = $msg->from->last_name;
 $chat_id = $msg->chat->id;
 $from_id = $msg->from->id;
 $message_id = $msg->message_id;
 $admin = 159588521;
-// mkdir("data");
-// mkdir("data/$from_id");
 
 if ($text == "/start") {
     mkdir("data/$from_id");
