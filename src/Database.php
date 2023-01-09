@@ -10,6 +10,7 @@ class DataBase {
 
     public function __construct($_root="data"){
         $this->root = $_root;
+        if(!file_exists($this->root)) mkdir($this->root);
     }
 
     public function getUsers(){
