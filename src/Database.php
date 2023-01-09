@@ -13,7 +13,7 @@ class DataBase {
     }
 
     public function getUsers(){
-        return scandir($this->root."/users");
+        return array_slice(scandir($this->root."/users"),2); // delete . , .. from scandir result;
     }
 
     public function setEntry($id,$entry,$val){
@@ -23,9 +23,14 @@ class DataBase {
     }
 
     public function addUser($id,...$info){
+        logger("Adding user to database ...");
         $user = $this->root."/users/$id";
-        mkdir($user);
+        logger("creating entity in : $user ...");
+        if(mkdir($user)){
+            logger("Entity successfuly created!");
+        }
         foreach($info as $k => $v){
+            logger("adding entry to $user ...");
             $this->addBlob($user."/$k",$v);
         }
     }
@@ -72,8 +77,10 @@ class DataBase {
     }
     
     private function addBlob($key,$value){
+        logger("adding entry: $key ...");
         $blob = fopen($key,'w');
-        fwrite($blob,$value);
+        if($blob) logger("entry successfly created ...");
+        if(!(fwrite($blob,$value)===false)) logger("entry filled with $value !");
         fclose($blob);
     }
 }

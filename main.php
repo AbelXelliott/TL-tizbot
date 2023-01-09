@@ -4,11 +4,9 @@ require "src/functions.php";
 require "src/Database.php";
 
 identifyTelegramServer();
-
 logger("New update:");
-logger("\t");
 
-$update = json_decode(logger(file_get_contents('php://input')));
+$update = getUpdate();
 $msg = $update->message;
 $text = $msg->text;
 $first = $msg->from->first_name;
@@ -16,7 +14,6 @@ $last = $msg->from->last_name;
 $chat_id = $msg->chat->id;
 $from_id = $msg->from->id;
 $message_id = $msg->message_id;
-$admin = 159588521;
 
 switch($db->modeOf($from_id)){
     case DataBase::SuperAdmin:
@@ -32,7 +29,7 @@ switch($db->modeOf($from_id)){
         $db->addUser($from_id,["last"=>$last,"first"=>$first,"firstActivity"=>time(),"lastActivity"=>time()]);
 }
 
-logger("",true); // flush logs
+logger(); // flush logs
 
 // ini_set( "expose_php","Off" );
 // ini_set( "Allow_url_fopen","Off" );

@@ -1,7 +1,6 @@
 <?php
 
 if ($text === "/start") {
-    mkdir("data/$from_id");
     bot("sendMessage",[
         "chat_id" => $chat_id,
         "text" => "Hello $first $last, Welcome to the official Tizrosoft bot!⁪⁬⁮⁮⁮⁮⁪⁬⁮⁮⁮⁮⁪⁬⁮⁮⁮⁮",
@@ -40,7 +39,6 @@ if ($text === "/start") {
 }
 
 elseif ($text === "Back") {
-    mkdir("data/$from_id");
     bot("sendMessage",[
         "chat_id" => $chat_id,
         "text" => "✅",
@@ -79,7 +77,6 @@ elseif ($text === "Back") {
 }
 
 elseif ($text === "Update 🔄") {
-    mkdir("data/$from_id");
     bot("sendMessage",[
         "chat_id" => $chat_id,
         "text" => "Bot has been successfully updated 🐣",

@@ -12,9 +12,9 @@ function bot($method,$datas=[]){
     curl_setopt($ch,CURLOPT_POSTFIELDS,$datas);
     $res = curl_exec($ch);
     if(curl_error($ch)){
-        logger(curl_error($ch));
+        logger("Bot Request Error: ".curl_error($ch));
     } else {
-        logger($res);
+        logger("Bot Request Success: ".$res);
         return json_decode($res);
     }
 }
@@ -33,24 +33,24 @@ function identifyTelegramServer(){
     }
     if (!$ok) die("Go away...");
 }
-function logger(String $msg="",$flush=false){
+function logger(...$records){
     static $buffer = [];
-    if($flush){
+    if(!$records){
         $logfile = fopen("logs/".date("Y-m-d"),"a");
-        $indent = 0;
         foreach($buffer as $record){
-            if($record==="\t"){
-                $indent+=1;
-                continue;
-            }
             fwrite($logfile,$record);
             fwrite($logfile,"\n");
-            fwrite($logfile,str_repeat("\t",$indent));
         }
         fclose($logfile);
     }
     else{
-        array_push($buffer,$msg);
-        return $msg;
+        foreach($records as $record){
+            array_push($buffer,$record);
+        }
     }
+}
+function getUpdate(){
+    $update = file_get_contents('php://input');
+    logger($update);
+    return json_decode($update);
 }
