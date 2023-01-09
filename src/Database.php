@@ -58,15 +58,19 @@ class DataBase {
 
     public function modeOf($id){
         if($this->isSuperAdmin($id)){
+            logger("$id is SuperAdmin");
             return Database::SuperAdmin;
         }
         elseif($this->isAdmin($id)){
+            logger("$id is Admin");
             return Database::Admin;
         }
         elseif($this->isUser($id)){
+            logger("$id is User");
             return Database::User;
         }
         else{
+            logger("$id is Not a User");
             return Database::None;
         }
     }
