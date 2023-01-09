@@ -17,43 +17,54 @@ class DataBase {
     }
 
     public function setEntry($id,$entry,$val){
+        logger("Set entry <<$entry>> to <<$val>> for user:<<$id>> ...");
         $blob = fopen($this->root."/users/$id/$entry","w");
-        fwrite($blob,$val);
+        if($blob===false) fuckedup("Failed to open entry!!!");
+        $res = fwrite($blob,$val);
+        if($res===false) fuckedup("Failed to write entry!!!");
         fclose($blob);
+        logger("Entry(<<$id>>.<<$entry>>:<<$val>>) seccessfuly setted.");
     }
 
     public function addUser($id,...$info){
         logger("Adding user to database ...");
-        $user = $this->root."/users/$id";
+        $user = "$this->root/users/$id";
         logger("creating entity in : $user ...");
-        if(mkdir($user)){
-            logger("Entity successfuly created!");
-        }
+        $res = mkdir($user);
+        if($res===false) fuckedup("Failed to create(mkdir) entity!!!");
         foreach($info[0] as $k => $v){
-            logger("adding entry to $user ...");
-            $this->addBlob($user."/$k",$v);
+            $this->setEntry($user,$k,$v);
         }
+        logger("Entity($id) successfuly created.");
     }
 
     public function isUser($id){
-        return file_exists($this->root."/users/$id");
+        return file_exists("$this->root/users/$id");
     }
 
     public function addAdmin($id){
+        logger("Adding admin with id=<<$id>>");
         if($this->isUser($id)){
-            return symlink($this->root."/users/$id",$this->root."/admins/$id");            
+            $res = symlink("$this->root/users/$id","$this->root/admins/$id");
+            logger("Adding admin(symlink) ".($res===true ? "Successed.":"Failed."));
+            return $res;
         }
         else{
+            logger("This id=<<$id>> is NOT a user.");
             return false;
         }
     }
 
     public function isAdmin($id){
-        return file_exists($this->root."/admins/$id");
+        return file_exists("$this->root/admins/$id");
+    }
+
+    public function createSuperAdmin($id){
+        fuckedup("NOT IMPELENTED YET");
     }
 
     public function isSuperAdmin($id){
-        return file_exists($this->root."/superadmin/$id");
+        return file_exists("$this->root/superadmin/$id");
     }
 
     public function modeOf($id){
@@ -77,15 +88,6 @@ class DataBase {
 
     public function sanityCheck(){
         $ok = false;
-        $ok = array_count_values(scandir($this->root."superadmin"))===3;
-    }
-    
-    private function addBlob($key,$value){
-        logger("adding entry: $key ...");
-        $blob = fopen($key,'w');
-        if($blob) logger("entry successfly created ...");
-        if(!(fwrite($blob,$value)===false)) logger("entry filled with $value !");
-        fclose($blob);
+        $ok = array_count_values(scandir("$this->root/superadmin"))===3;
     }
 }
-$db = new DataBase();

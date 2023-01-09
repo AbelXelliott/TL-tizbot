@@ -3,6 +3,7 @@ function dd($v){
     echo "<pre>".var_dump($v)."<pre>";
     die();
 }
+
 function bot($method,$datas=[]){
     global $logger;
     $url = "https://api.telegram.org/bot".API_KEY."/".$method;
@@ -18,6 +19,7 @@ function bot($method,$datas=[]){
         return json_decode($res);
     }
 }
+
 function identifyTelegramServer(){
     $telegram_ip_ranges = [['lower' => '149.154.160.0', 'upper' => '149.154.175.255'],['lower' => '91.108.4.0','upper' => '91.108.7.255']];
     $ip_dec = (float) sprintf('%u', ip2long($_SERVER['REMOTE_ADDR']));
@@ -33,10 +35,13 @@ function identifyTelegramServer(){
     }
     if (!$ok) die("Go away...");
 }
+
+if(LOG_ENABLED){
 function logger(...$records){
     static $buffer = [];
     if(!$records){
-        $logfile = fopen("logs/".date("Y-m-d"),"a");
+        if(!file_exists(LOG_ROOT)) mkdir(LOG_ROOT);
+        $logfile = fopen(LOG_ROOT.date("Y-m-d"),"a");
         foreach($buffer as $record){
             fwrite($logfile,$record);
             fwrite($logfile,"\n");
@@ -49,7 +54,19 @@ function logger(...$records){
         }
     }
 }
+}else{
+function logger(){};
+}
+
+function fuckedup($msg){
+    logger("FUCKED UP: ".$msg);
+    logger(); //flush
+    die();
+}
+
+
 function getUpdate(){
+    logger("New update:");
     $update = file_get_contents('php://input');
     logger($update);
     return json_decode($update);
