@@ -29,7 +29,7 @@ class DataBase {
         if(mkdir($user)){
             logger("Entity successfuly created!");
         }
-        foreach($info as $k => $v){
+        foreach($info[0] as $k => $v){
             logger("adding entry to $user ...");
             $this->addBlob($user."/$k",$v);
         }
